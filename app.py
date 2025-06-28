@@ -67,10 +67,7 @@ with col_left:
     elapsed_sec = int(st.session_state.elapsed)
     hours, remainder = divmod(elapsed_sec, 3600)
     minutes, seconds = divmod(remainder, 60)
-    st.markdown(
-        f"<b>Time Tracked:</b><br>{hours} hours<br>{minutes} minutes<br>{seconds} seconds>",
-        unsafe_allow_html=True
-    )
+    st.markdown(f"**Time Tracked:**<br>{hours} hours<br>{minutes} minutes<br>{seconds} seconds", unsafe_allow_html=True)
 
 with col_right:
     st.image("avatar1.png", width=120)
@@ -105,22 +102,14 @@ st.subheader("Your Study Plan")
 
 if st.session_state["tasks"]:
     df = pd.DataFrame(st.session_state["tasks"])
-    updated_tasks = []
 
     for i, row in df.iterrows():
-        col1, col2, col3, col4, col5, col6 = st.columns([2, 2, 2, 1.5, 1, 1])
+        col1, col2, col3, col4, col5 = st.columns([2, 2, 2, 2, 1])
         col1.write(row["Subject"])
         col2.write(row["Topic"])
         col3.write(row["Date"])
         col4.write(row["Time"])
-        is_done = col5.checkbox("Done", key=f"done_{i}", value=row["Completed"])
-        delete = col6.button("❌", key=f"delete_{i}")
-
-        if not delete:
-            row["Completed"] = is_done
-            updated_tasks.append(row)
-
-    st.session_state["tasks"] = updated_tasks
+        st.session_state["tasks"][i]["Completed"] = col5.checkbox("Done", key=f"done_{i}", value=row["Completed"])
 
     st.download_button("Download as CSV", df.to_csv(index=False), "study_plan.csv", "text/csv")
 
@@ -150,7 +139,7 @@ if not prod_df_day.empty:
     prod_df_day["Timestamp_dt"] = pd.to_datetime(prod_df_day["Timestamp"], format="%H:%M")
     prod_df_day.sort_values(by="Timestamp_dt", inplace=True)
 
-    fig = px.line(prod_df_day, x="Timestamp_dt", y="Minutes", title="Tracked Study Time Today", markers=True)
+    fig = px.line(prod_df_day, x="Timestamp_dt", y="Minutes", title="Tracked Study Time Today (Line Chart)", markers=True)
     fig.update_traces(line=dict(color="#cd8495", width=3), marker=dict(color="#cd8495", size=8))
     fig.update_layout(
         xaxis_title="Time of Day", yaxis_title="Minutes Spent",
@@ -159,7 +148,7 @@ if not prod_df_day.empty:
         font=dict(color="#cd8495"),
         title_font=dict(color="#cd8495"),
         plot_bgcolor="#ffe6f0",
-        paper_bgcolor="#ffe6f0"
+        paper_bgcolor='#ffe6f0'
     )
     st.plotly_chart(fig, use_container_width=True)
 else:
@@ -191,3 +180,4 @@ if not prod_df.empty and "Date" in prod_df.columns:
         st.info("No data for this week yet.")
 else:
     st.info("No productivity data available.")
+
