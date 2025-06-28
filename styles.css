@@ -1,24 +1,23 @@
-/* styles.css */
-
+/* Page background and text color */
 body, .stApp {
     background-color: #fff7f5 !important;
     color: #e91e63;
 }
 
-/* Customize text elements */
+/* Text elements */
 .stMarkdown, .stText, .stTitle, .stSubheader,
 label, .css-1cpxqw2, .css-1v0mbdj, .css-1d391kg {
     color: #e91e63 !important;
 }
 
-/* --- Customized Success Message Styling --- */
+/* Styled notification (Timer started!) */
 .stAlert[data-baseweb="notification"] {
     background-color: #fff7f5 !important;
     border-left: 6px solid #e91e63 !important;
     color: #e91e63 !important;
 }
 
-/* Input elements styling */
+/* Inputs */
 input, textarea, select {
     background-color: #ffe6f0 !important;
     color: #e91e63 !important;
@@ -38,7 +37,7 @@ input, textarea, select {
     border-radius: 5px !important;
 }
 
-/* Button styling */
+/* Buttons */
 .stButton button {
     background-color: #e91e63 !important;
     color: white !important;
@@ -49,3 +48,4 @@ input, textarea, select {
 .stButton button:hover {
     background-color: #d81b60 !important;
 }
+
