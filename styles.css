@@ -1,51 +1,61 @@
-/* Page background and text color */
+/* styles.css (Stripe Dot Dev inspired) */
+:root {
+    --white: #fefcfa;
+    --gray: #e9e9ec;
+    --black: #111;
+    --accent: #000;
+    --text: #111;
+    --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 body, .stApp {
-    background-color: #fff7f5 !important;
-    color: #e91e63;
+    background: linear-gradient(to bottom right, #fff, #f5f5fa) !important;
+    color: var(--text);
+    font-family: var(--font-family);
 }
 
-/* Text elements */
-.stMarkdown, .stText, .stTitle, .stSubheader,
-label, .css-1cpxqw2, .css-1v0mbdj, .css-1d391kg {
-    color: #e91e63 !important;
+h1, h2, h3, .stTitle, .stSubheader, label, .stMarkdown {
+    font-family: var(--font-family);
+    font-weight: 700;
+    color: var(--black) !important;
 }
 
-/* Styled notification (Timer started!) */
-.stAlert[data-baseweb="notification"] {
-    background-color: #fff7f5 !important;
-    border-left: 6px solid #e91e63 !important;
-    color: #e91e63 !important;
+input, textarea, select, .stDateInput input, .stTimeInput input {
+    background-color: var(--white) !important;
+    color: var(--black) !important;
+    border: 2px solid var(--gray) !important;
+    border-radius: 6px !important;
+    padding: 0.6em 1em !important;
+    font-size: 16px !important;
 }
 
-/* Inputs */
-input, textarea, select {
-    background-color: #ffe6f0 !important;
-    color: #e91e63 !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 5px !important;
-}
-
-.stDateInput > div,
-.stTimeInput > div,
-.stMultiSelect > div,
-.stSelectbox > div {
-    background-color: #ffe6f0 !important;
-    color: #e91e63 !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 5px !important;
-}
-
-/* Buttons */
-.stButton button {
-    background-color: #e91e63 !important;
+.stButton > button,
+button[type="submit"] {
+    background-color: var(--black) !important;
     color: white !important;
-    border: none;
-    border-radius: 5px;
+    font-weight: bold !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 0.6em 1.2em !important;
+    font-size: 16px !important;
+    transition: all 0.2s ease-in-out;
 }
 
-.stButton button:hover {
-    background-color: #d81b60 !important;
+.stButton > button:hover,
+button[type="submit"]:hover {
+    background-color: var(--gray) !important;
+    color: var(--black) !important;
+}
+
+.stAlert[data-baseweb="notification"] {
+    background-color: var(--gray) !important;
+    border-left: 5px solid var(--black) !important;
+    color: var(--black) !important;
+    font-weight: bold !important;
+}
+
+.css-1cpxqw2, .css-1v0mbdj, .css-1d391kg {
+    color: var(--black) !important;
+    font-family: var(--font-family);
 }
 
